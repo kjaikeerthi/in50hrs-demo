@@ -227,6 +227,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   config.omniauth :facebook, APP_CONFIG["facebook"]["key"], APP_CONFIG["facebook"]["secret"], :scope => 'email,publish_actions,user_location,user_website'
   config.omniauth :twitter, APP_CONFIG["twitter"]["key"], APP_CONFIG["twitter"]["secret"]
+  config.omniauth :wordpress, APP_CONFIG["wordpress"]["key"], APP_CONFIG["wordpress"]["secret"]
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

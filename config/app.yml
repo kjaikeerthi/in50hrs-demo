@@ -5,4 +5,7 @@ development:
   twitter:
     key: RFeL8EJn3V7K00E12QYU7g
     secret: FngMw3BkJxBxVaLVKUVBeMMPCt3QG8GHWLEIQSgY
+  wordpress:
+    key: 8488
+    secret: x5fj7ofeB4bcwozpwJ6YJR9z21OFFePnxoI0SXoT6FZhEB2dLHT82urqg6LzIGvQ
 
