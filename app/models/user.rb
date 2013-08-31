@@ -16,6 +16,16 @@ class User < ActiveRecord::Base
     false
   end
 
+
+  def add_twitter_service(auth)
+    service = services.find_by({user_id: self.id, uid: auth.uid})
+    unless service
+      add_to_service({provider: "twitter", uid: auth.uid, auth_token: auth.credentials.token, auth_secret: auth.credentials.secret})
+      return true
+    end
+    false
+  end
+
   def self.add_facebook_service(auth, user)
     if user
       service = user.services.where({uid: auth.uid})
@@ -32,5 +42,11 @@ class User < ActiveRecord::Base
       end
     end
     false
+  end
+
+  ["twitter", "facebook", "wordpress"].each do |arg|
+    define_method arg do
+      self.services.find_by({provider: arg})
+    end
   end
 end

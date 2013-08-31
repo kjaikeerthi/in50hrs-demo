@@ -3,8 +3,18 @@ hello world
 - if user_signed_in?
   = current_user.email
   = current_user.services.map(&:provider)
-  = link_to "Signin", destroy_user_session_path
-  = link_to "Add twitter", user_omniauth_authorize_path({provider: "twitter"})
-- else
-  = link_to "Sign out", new_user_session_path
+  = link_to "Signout", destroy_user_session_path
+  %br
+  = link_to "Add twitter", user_omniauth_authorize_path({provider: "twitter"}) unless current_user.twitter
+  %br
+  = link_to "Add Facebook", user_omniauth_authorize_path({provider: "facebook"}) unless current_user.facebook
+  %br
+  -# = link_to "Add Wordpress", user_omniauth_authorize_path({provider: "wordpress"}) unless current_user.wordpress
+  %br
+  - current_user.services.each do |service|
+    = service.provider
+    = service.uid
+    %br
 
+- else
+  = link_to "Signin", new_user_session_path

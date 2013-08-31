@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/arunagw/omniauth-twitter.git
+  revision: ff2546a45817c7ff1c3cdedbc13b44fc8891820f
+  specs:
+    omniauth-twitter (1.0.0)
+      multi_json (~> 1.3)
+      omniauth-oauth (~> 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -95,9 +103,6 @@ GEM
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
-    omniauth-twitter (1.0.0)
-      multi_json (~> 1.3)
-      omniauth-oauth (~> 1.0)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
     pry (0.9.12.2)
@@ -175,7 +180,7 @@ DEPENDENCIES
   mysql2
   omniauth
   omniauth-facebook
-  omniauth-twitter
+  omniauth-twitter!
   pry-rails
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
