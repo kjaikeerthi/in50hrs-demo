@@ -18,6 +18,9 @@ gem "omniauth-facebook"
 # Use omniauth-facebook for Twitter authentication
 gem "omniauth-twitter"
 
+# use Haml for Template Engine
+gem "haml-rails"
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -45,7 +48,11 @@ group :doc do
 end
 
 group :development do
+  # Use pry for debugger
   gem 'pry-rails'
+
+  # Use thin for developement app server
+  gem 'thin'
 end
 
 # Use ActiveModel has_secure_password
