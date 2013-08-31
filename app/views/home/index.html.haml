@@ -1,1 +1,10 @@
 hello world
+
+- if user_signed_in?
+  = current_user.email
+  = current_user.services.map(&:provider)
+  = link_to "Signin", destroy_user_session_path
+  = link_to "Add twitter", user_omniauth_authorize_path({provider: "twitter"})
+- else
+  = link_to "Sign out", new_user_session_path
+
