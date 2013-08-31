@@ -26,3 +26,4 @@ module Wlog
     # config.i18n.default_locale = :de
   end
 end
+APP_CONFIG = YAML.load_file(File.join(Rails.root, "config", "app.yml"))[Rails.env]
