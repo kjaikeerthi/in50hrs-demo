@@ -5,6 +5,7 @@ class CreateServices < ActiveRecord::Migration
       t.string :auth_token
       t.string :auth_secret
       t.string :uid
+      t.string :blog_id
       t.belongs_to :user, index: true
 
       t.timestamps

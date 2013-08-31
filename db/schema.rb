@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20130831124032) do
     t.string   "auth_token"
     t.string   "auth_secret"
     t.string   "uid"
+    t.string   "blog_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,0 +1,9 @@
+%ul
+  - @posts.each do |post|
+    %li
+      != link_to post.title, post.url
+      = post.url
+      %br
+      != post.created_date
+      %br
+      != post.categorie

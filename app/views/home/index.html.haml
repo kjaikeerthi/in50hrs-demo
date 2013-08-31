@@ -9,7 +9,7 @@ hello world
   %br
   = link_to "Add Facebook", user_omniauth_authorize_path({provider: "facebook"}) unless current_user.facebook
   %br
-  -# = link_to "Add Wordpress", user_omniauth_authorize_path({provider: "wordpress"}) unless current_user.wordpress
+  = link_to "Add Wordpress", user_omniauth_authorize_path({provider: "wordpress"})
   %br
   - current_user.services.each do |service|
     = service.provider

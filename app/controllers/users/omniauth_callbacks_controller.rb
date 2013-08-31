@@ -1,5 +1,5 @@
 class Users::OmniauthCallbacksController < ApplicationController
-  before_filter :authenticate_user!, only: [:twitter]
+  before_filter :authenticate_user!, only: [:twitter, :wordpress]
 
   def facebook
     auth = request.env["omniauth.auth"]
@@ -13,6 +13,12 @@ class Users::OmniauthCallbacksController < ApplicationController
   def twitter
     auth = request.env["omniauth.auth"]
     current_user.add_twitter_service(auth)
+    redirect_to root_path
+  end
+
+  def wordpress
+    auth = request.env["omniauth.auth"]
+    current_user.add_wordpress_service(auth)
     redirect_to root_path
   end
 end

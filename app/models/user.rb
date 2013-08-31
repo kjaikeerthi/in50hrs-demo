@@ -9,13 +9,22 @@ class User < ActiveRecord::Base
 
   def add_to_service(params)
     service = Service.find_by({user_id: self.id, uid: params[:uid]})
-    unless service
+    if (!service) || (service && service.provider == "wordpress" && Service.find(service.blog_id).nil?)
       services.create(params)
       return true
     end
     false
   end
 
+  def add_wordpress_service(auth)
+    service = services.find_by({user_id: self.id, uid: auth.uid})
+    unless service
+      add_to_service({provider: "wordpress", uid: auth.uid, auth_token: auth.credentials.token, blog_id: auth.extra.raw_info.primary_blog})
+      return true
+    end
+    false
+
+  end
 
   def add_twitter_service(auth)
     service = services.find_by({user_id: self.id, uid: auth.uid})
