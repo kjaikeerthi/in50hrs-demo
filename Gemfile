@@ -18,6 +18,9 @@ gem "omniauth-facebook"
 # Use omniauth-facebook for Twitter authentication
 gem "omniauth-twitter"
 
+# Use omniauth-facebook for Twitter authentication
+gem "omniauth-wordpress"
+
 # use Haml for Template Engine
 gem "haml-rails"
 
