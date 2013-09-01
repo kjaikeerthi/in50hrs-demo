@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :services
 
+  mount_uploader :avatar, AvatarUploader
+
   def add_to_service(params)
     service = Service.find_by({user_id: self.id, uid: params[:uid]})
     if (!service) || (service && service.provider == "wordpress" && Service.find(service.blog_id).nil?)
@@ -44,7 +46,7 @@ class User < ActiveRecord::Base
       end
     else
       user = User.find_by({email: auth.info.email})
-      user = User.create({email: auth.info.email, password: Time.now.to_i}) unless user
+      user = User.create({email: auth.info.email, password: Time.now.to_i, remote_avatar_url: auth.info.image}) unless user
       if user
         user.add_to_service({provider: "facebook", uid: auth.uid, auth_token: auth.credentials.token})
         return true

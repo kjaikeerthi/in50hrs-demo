@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20130831124032) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "username"
+    t.string   "avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

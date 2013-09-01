@@ -16,6 +16,7 @@
           %ul.top_menu.span8.pull-right
             - if user_signed_in?
               %li= link_to "Signout", destroy_user_session_path, method: "delete"
+              %li= image_tag(current_user.avatar, size: "25x25")
             - else
               %li= link_to "Login", new_user_session_path
     #main
