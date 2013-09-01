@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title Wlog, wow your blog!!!
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body
+    .row
+      .header.navbar.navbar-inverse.navbar-fixed-top
+        .container
+          .span3.logo
+            = link_to "WLOG", root_path
+          %ul.top_menu.span8.pull-right
+            %li= link_to "Login", new_user_session_path
+    #main= yield
