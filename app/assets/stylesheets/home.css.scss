@@ -1,4 +1,5 @@
 @import 'bootstrap';
+@import "font-awesome";
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic);
 
 html, body{
@@ -45,4 +46,25 @@ body{
 #main{
     clear: both;
     margin-top: 50px;
+
+    .login-box{
+	margin-top: 100px;
+	background: white;
+	text-align:center;
+	padding: 30px;
+	.facebook-button, .twitter-button{
+	    margin-bottom: 10px;
+	    box-shadow: 1px 1px 1px #CCC;
+	    padding: 10px 40px;;
+	    font-size: 20px;
+	    background: #3B5998;
+	    color: white;
+	    text-decoration: none;
+	}
+	.twitter-button{
+	    background: #4099FF;
+	}
+
+    }
+
 }

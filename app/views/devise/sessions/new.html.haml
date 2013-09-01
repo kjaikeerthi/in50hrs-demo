@@ -1,0 +1,8 @@
+.row
+  .span6.offset3.login-box
+    %h3(style="font-weight:400") Login in with
+    %br
+    %a.facebook-button.span3.offset1{href: user_omniauth_authorize_path({provider: "facebook"})}
+      Facebook
+    %a.twitter-button.span3.offset1{href: user_omniauth_authorize_path({provider: "twitter"})}
+      Twitter
