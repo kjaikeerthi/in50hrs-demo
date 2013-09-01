@@ -1,9 +1,11 @@
-%ul
-  - @posts.each do |post|
-    %li
-      != link_to post.title, post.url
-      = post.url
-      %br
-      != post.created_date
-      %br
-      != post.categorie
+.row
+  .span12
+    %ul
+      - @posts.each do |post|
+        %li(style="list-style: none;background:white;border-bottom: 1px solid #CCC;padding:10px 5px;")
+          != link_to post.title, post.url, style: "font-size: 15px;font-weight:700;color: #333;margin-left:0;", class: "span10"
+          %a{href: "https://www.justinmind.com/usernote/tests/10735225/10743080/11076590/index.html#/screens/d12245cc-1680-458d-89dd-4f0d7fb22724", calss: "span1", style: "text-align:right;float:right;margin-right:10px;color:#333;text-decoration:none;"}
+            %i.icon-long-arrow-right
+          %br
+          != post.created_date.strftime("%B, %e, %j")
+          != post.categories.keys.map { |key| "<a href='#{post.categories[key]["slug"]}'>#{post.categories[key]["name"]}</a>"}.join(", ")

@@ -1,3 +1,28 @@
+%div(style="background:white;")
+  .row
+    .span12(style="text-align:center;margin-top:10px;")
+      %span(style="font-weight:600;font-size:20px;") Add Your Blog
+      %hr(style="border:none;border-bottom: 1px solid #CCC")
+  .row(style="text-align:center;")
+    .span8
+      %ul.span5
+        %li(style="list-style:none")
+          %h4.span3(style="font-weight:500")  Wordpress
+          = link_to "+", user_omniauth_authorize_path({provider: "wordpress"}), class: "span1 pull-right", style: "font-size: 15px;color:#333"
+  .row
+    .span12(style="text-align:center;margin-top:10px;")
+      %span(style="font-weight:600;font-size:20px;") Add Your Social Networks
+      %hr(style="border:none;border-bottom: 1px solid #CCC")
+  .row
+    .span6
+      %span(style="font-size:15px;") Wordpress
+      = link_to "+", user_omniauth_authorize_path({provider: "wordpress"})
+      %br
+      = link_to "Add twitter", user_omniauth_authorize_path({provider: "twitter"})
+      %br
+      = link_to "Add Facebook", user_omniauth_authorize_path({provider: "facebook"})
+      %br
+
 .box(style="background: white;")
 hello world
 
@@ -15,7 +40,10 @@ hello world
   - current_user.services.each do |service|
     = service.provider
     = service.uid
+    - if service.provider == "wordpress"
+      = link_to service.uid, posts_path(service.blog_id)
     %br
 
 - else
   = link_to "Signin", new_user_session_path
+ 
