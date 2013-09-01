@@ -1,49 +1,28 @@
-%div(style="background:white;")
-  .row
-    .span12(style="text-align:center;margin-top:10px;")
-      %span(style="font-weight:600;font-size:20px;") Add Your Blog
-      %hr(style="border:none;border-bottom: 1px solid #CCC")
-  .row(style="text-align:center;")
-    .span8
-      %ul.span5
-        %li(style="list-style:none")
-          %h4.span3(style="font-weight:500")  Wordpress
-          = link_to "+", user_omniauth_authorize_path({provider: "wordpress"}), class: "span1 pull-right", style: "font-size: 15px;color:#333"
-  .row
-    .span12(style="text-align:center;margin-top:10px;")
-      %span(style="font-weight:600;font-size:20px;") Add Your Social Networks
-      %hr(style="border:none;border-bottom: 1px solid #CCC")
+%div(style="background:white;min-height:640px;")
   .row
     .span6
-      %span(style="font-size:15px;") Wordpress
-      = link_to "+", user_omniauth_authorize_path({provider: "wordpress"})
-      %br
-      = link_to "Add twitter", user_omniauth_authorize_path({provider: "twitter"})
-      %br
-      = link_to "Add Facebook", user_omniauth_authorize_path({provider: "facebook"})
-      %br
+      %h4(style="text-align:center") Your Blogs
+      %ul(style="text-align:center")
+        - current_user.services.map{|s| s if s.provider == "wordpress"}.compact.each do |service|
+          %li(style="list-style: none;padding-top:10px;")
+            = link_to "View Posts (#{service.uid})", posts_path({blog_id: service.blog_id}),class: "facebook-button span3 offset1", style: "background: whitesmoke;color:#333"
+        %li(style="list-style: none;padding-top:10px;")
+          = link_to "Add Wordpress Account", user_omniauth_authorize_path({provider: "wordpress"}),class: "facebook-button span3 offset1", style: "background: #1e8cbe"
 
-.box(style="background: white;")
-hello world
-
-- if user_signed_in?
-  = current_user.email
-  = current_user.services.map(&:provider)
-  = link_to "Signout", destroy_user_session_path, method: "delete"
-  %br
-  = link_to "Add twitter", user_omniauth_authorize_path({provider: "twitter"}) unless current_user.twitter
-  %br
-  = link_to "Add Facebook", user_omniauth_authorize_path({provider: "facebook"}) unless current_user.facebook
-  %br
-  = link_to "Add Wordpress", user_omniauth_authorize_path({provider: "wordpress"})
-  %br
-  - current_user.services.each do |service|
-    = service.provider
-    = service.uid
-    - if service.provider == "wordpress"
-      = link_to service.uid, posts_path(service.blog_id)
-    %br
-
-- else
-  = link_to "Signin", new_user_session_path
- 
+    .span6
+      %h4(style="text-align:center") Your Social networks
+      %ul(style="text-align:center")
+        %li(style="list-style: none;padding-top:10px;")
+          = link_to "Add Facebook Account", user_omniauth_authorize_path({provider: "facebook"}),class: "facebook-button span3"
+        %li(style="list-style: none;padding-top:10px;")
+          %br
+          = link_to "Add Twitter Account", user_omniauth_authorize_path({provider: "twitter"}),class: "twitter-button  span3",style:""
+        %li(style="list-style: none;padding-top:10px;")
+          %br
+          = link_to "Hacker News Account", user_omniauth_authorize_path({provider: "twitter"}),class: "twitter-button span3",style:"background:#ff6600"
+        %li(style="list-style: none;padding-top:10px;")
+          %br
+          = link_to "Add Quora Account", user_omniauth_authorize_path({provider: "twitter"}),class: "twitter-button span3",style:"background:#c41a00"
+        %li(style="list-style: none;padding-top:10px;")
+          %br
+          = link_to "Add Reddit Account", user_omniauth_authorize_path({provider: "twitter"}),class: "twitter-button span3", style:"background:#cee3f8;"
